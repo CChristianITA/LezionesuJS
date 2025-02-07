@@ -1,8 +1,8 @@
 <?php
-$nome = $_POST['nome'];
-$cognome = $_POST['cognome'];
-$email = $_POST['email'];
-$password = $_POST['password'];
+$nome = htmlspecialchars($_POST['nome']);
+$cognome = htmlspecialchars($_POST['cognome']);
+$email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);  
+$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
 $host = "localhost";
 $userdb = "root";
@@ -15,7 +15,7 @@ $query = "CREATE TABLE IF NOT EXISTS utenti(
 id INT(3) AUTO_INCREMENT PRIMARY KEY,
 nome VARCHAR(30) NOT NULL,
 cognome VARCHAR(50) NOT NULL,
-email VARCHAR(255) NOT NULL,
+email VARCHAR(255) NOT NULL UNIQUE,
 password VARCHAR(255) NOT NULL,
 reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )";

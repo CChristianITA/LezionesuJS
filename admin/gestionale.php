@@ -1,4 +1,21 @@
 <?php
+
+
+if ($_SERVER ['REQUEST_METHOD']=== 
+'GET'&& !isset($_SERVER
+['HTTP_REFERER'])){
+
+  die("Non Puoi Accedere");
+} 
+
+
+
+
+
+
+
+
+
 $host = "localhost";
 $userdb = "root";
 $pswdb = "";
@@ -28,6 +45,7 @@ $risultati = $conn -> query($query);
       crossorigin="anonymous"
       defer
     ></script>
+    <script src="assets/js/gestionale.js" defer></script>
   </head>
   <body>
     <main>
@@ -53,6 +71,9 @@ $risultati = $conn -> query($query);
       <td colspan="1">'.$riga['nome'].'</td>
       <td>'.$riga['cognome'].'</td>
       <td>'.$riga['email'].'</td>
+      <td><button class="btn btn-danger" type="button">Cancella</button></td>
+      <td><button class="btn btn-warning" type="button">Modifica</button></td>
+
     </tr>';
             
                 }
@@ -68,3 +89,4 @@ $risultati = $conn -> query($query);
     </main>
   </body>
 </html>
+

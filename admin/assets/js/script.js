@@ -65,5 +65,5 @@ login.addEventListener("submit", (event) => {
   } else {
     event.preventDefault();
     login.classList.add("was-validated");
-  }
+  }  
 });
